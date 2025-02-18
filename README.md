@@ -15,3 +15,19 @@ Welcome to this sample Node.js API project! This project is a starting point for
 3. Install dependencies:
    ```sh
    npm install
+   ```
+4. Running the Project
+To start the API server, use:
+   ```sh
+   npm start
+   ```
+5. Running Tests
+This project uses Mocha and Supertest for testing the API endpoints. You can run the tests with:
+    ```sh
+    npm test
+    ```
+
+## Contributing
+Before contributing, please read [CONTRIBUTING](CONTRIBUTING.md) for guidelines on how to set up your fork, branch naming conventions, and our pull request process.
+
+Happy contributing!
