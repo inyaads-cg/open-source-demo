@@ -1,13 +1,6 @@
 
-*See [README.md](README.md)*
-
----
-
-**CONTRIBUTING.md**
-
 This file explains contribution guidelines, how to fork, branch naming conventions, and the pull request process.
 
-```markdown
 # Contributing Guidelines
 
 Thank you for considering contributing to our project! To ensure a smooth pull request process, please follow these guidelines:
