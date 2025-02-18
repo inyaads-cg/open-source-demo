@@ -1,0 +1,29 @@
+name: Welcome First-Time Issue Contributor
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome first-time issue opener
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const author = issue.user.login;
+            // Search for previous issues (excluding pull requests) created by the author
+            const { data: issues } = await github.rest.search.issuesAndPullRequests({
+              q: `repo:${context.repo.owner}/${context.repo.repo} is:issue author:${author}`
+            });
+            // If this is the first issue opened by the user
+            if (issues.total_count === 1) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Congratulations 🎉 @${author} on opening your first issue! Thank you for contributing and welcome to the community!`
+              });
+            }
