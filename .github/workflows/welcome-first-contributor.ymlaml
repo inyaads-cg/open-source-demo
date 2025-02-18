@@ -1,0 +1,29 @@
+name: Welcome First-Time Contributors
+
+on:
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome first-time contributor
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const author = pr.user.login;
+            // Search for previous PRs from the same author
+            const { data: contributions } = await github.rest.search.issuesAndPullRequests({
+              q: `repo:${context.repo.owner}/${context.repo.repo} is:pr author:${author}`
+            });
+            // If this is the first pull request
+            if (contributions.total_count === 1) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: `Congratulations @${author} on your first contribution! Thank you for helping improve this project and welcome to the community!`
+              });
+            }
