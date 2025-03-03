@@ -31,3 +31,5 @@ This project uses Mocha and Supertest for testing the API endpoints. You can run
 Before contributing, please read [CONTRIBUTING](CONTRIBUTING.md) for guidelines on how to set up your fork, branch naming conventions, and our pull request process.
 
 Happy contributing!
+
+## A new line
